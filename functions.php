@@ -146,19 +146,21 @@ class ShopTheme {
 	 * Enqueue scripts and styles
 	 */
 	public function enqueueAssets() {
-		// Enqueue Swiper CSS from CDN
-		wp_enqueue_style(
-			'swiper',
-			'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css',
-			[],
-			null
-		);
+		// Enqueue Swiper CSS from CDN only when needed
+		if (is_front_page() || is_page_template('template-full-width.php')) {
+			wp_enqueue_style(
+				'swiper',
+				'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css',
+				[],
+				null
+			);
+		}
 
 		// Enqueue Tailwind CSS
 		wp_enqueue_style(
 			'tailwindcss',
 			get_template_directory_uri() . '/dist/css/tailwind.min.css',
-			['swiper'],
+			[],
 			_S_VERSION
 		);
 
@@ -171,32 +173,36 @@ class ShopTheme {
 		);
 		wp_style_add_data('shop-theme-style', 'rtl', 'replace');
 
-		// Enqueue Swiper JS from CDN
-		wp_enqueue_script(
-			'swiper',
-			'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js',
-			array('jquery'),
-			null,
-			true
-		);
+		// Enqueue Swiper JS from CDN only when needed
+		if (is_front_page() || is_page_template('template-full-width.php')) {
+			wp_enqueue_script(
+				'swiper',
+				'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js',
+				[],
+				null,
+				true
+			);
+		}
 
-		// Enqueue app bundle (libraries and dependencies)
+		// Enqueue app bundle (libraries and dependencies) with defer
 		wp_enqueue_script(
 			'shop-theme-app',
 			get_template_directory_uri() . '/dist/js/app.bundle.js',
-			array('jquery', 'swiper'),
+			[],
 			_S_VERSION,
 			true
 		);
+		wp_script_add_data('shop-theme-app', 'defer', true);
 
-		// Enqueue main bundle (custom JS)
+		// Enqueue main bundle (custom JS) with defer
 		wp_enqueue_script(
 			'shop-theme-main',
 			get_template_directory_uri() . '/dist/js/main.bundle.js',
-			array('shop-theme-app'),
+			['shop-theme-app'],
 			_S_VERSION,
 			true
 		);
+		wp_script_add_data('shop-theme-main', 'defer', true);
 
 		if (is_singular() && comments_open() && get_option('thread_comments')) {
 			wp_enqueue_script('comment-reply');
@@ -212,6 +218,8 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/performance.php';
+require get_template_directory() . '/inc/rest-api-fix.php';
 // require get_template_directory() . '/inc/order-auditional.php';
 // require get_template_directory() . '/inc/incomplete-checkout.php';
 // require get_template_directory() . '/inc/customize-checkout.php';

@@ -67,22 +67,47 @@ function courier_check_render_column_classic($column, $post_id) {
 function courier_check_get_courier_data($order) {
     $meta_key = '_courier_check_data';
     $data = $order->get_meta($meta_key, true);
-    if (!$data) {
-        $phone = $order->get_billing_phone();
-        if (!$phone) return [];
+    
+    // Check if we have cached data and it's not expired (24 hours)
+    if ($data && isset($data['cached_at']) && (time() - $data['cached_at']) < 86400) {
+        return $data;
+    }
+    
+    $phone = $order->get_billing_phone();
+    if (!$phone) return [];
+    
+    // Check transient cache first
+    $transient_key = 'courier_data_' . md5($phone);
+    $cached_data = get_transient($transient_key);
+    
+    if ($cached_data !== false) {
+        $data = $cached_data;
+    } else {
         $response = wp_remote_post(COURIER_API_URL . '?phone=' . urlencode($phone), [
             'headers' => [
                 'Authorization' => 'Bearer ' . COURIER_API_KEY,
             ],
             'timeout' => 10,
         ]);
+        
         if (is_wp_error($response)) return [];
+        
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
+        
         if (!$data || !is_array($data)) return [];
-        $order->update_meta_data($meta_key, $data);
-        $order->save();
+        
+        // Add cache timestamp
+        $data['cached_at'] = time();
+        
+        // Cache for 24 hours
+        set_transient($transient_key, $data, 86400);
     }
+    
+    // Update order meta
+    $order->update_meta_data($meta_key, $data);
+    $order->save();
+    
     return $data;
 }
 
