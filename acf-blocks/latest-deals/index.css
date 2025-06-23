@@ -1,0 +1,9 @@
+.hoverable-group:hover .product-card-style-1 {
+    opacity: 0.4;
+    filter: blur(4px);
+    transition: all 0.3s ease-in-out;
+}
+.hoverable-group:hover .product-card-style-1:hover {
+    opacity: 1;
+    filter: blur(0px)
+}

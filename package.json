@@ -1,0 +1,49 @@
+{
+  "name": "shop-theme",
+  "version": "1.0.0",
+  "description": "WordPress theme with modern build tools",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "dev": "gulp"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "gulp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "autoprefixer": "^10.4.17",
+    "babel-loader": "^10.0.0",
+    "browser-sync": "^2.29.3",
+    "css-loader": "^7.1.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss": "^8.4.35",
+    "sass": "^1.71.1",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.1",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "gsap": "3.12.0",
+    "split-type": "^0.3.4",
+    "swiper": "^11.2.8"
+  }
+}

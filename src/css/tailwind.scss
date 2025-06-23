@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-primary-extend{
+  @apply flex items-center justify-center px-6 py-2 rounded-md font-medium transition-colors duration-200 text-base font-normal h-[3rem] !bg-[linear-gradient(45deg,rgb(239,35,60)_0%,rgb(244,113,3)_100%)] !text-white hover:!bg-[linear-gradient(45deg,rgb(239,35,60)_0%,rgb(244,113,3)_100%)];
+}
+
+// Your custom styles below 
+@layer components {
+    .btn {
+      @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors duration-200;
+    }
+    
+    .btn-primary {
+      @apply bg-[linear-gradient(45deg,rgb(239,35,60)_0%,rgb(244,113,3)_100%)] text-white hover:bg-[linear-gradient(45deg,rgb(239,35,60)_0%,rgb(244,113,3)_100%)];
+    }
+    
+    .btn-secondary {
+      @apply bg-secondary text-white hover:bg-secondary/90;
+    }
+  } 
+  
+  @-webkit-keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Swiper */
+  .swiper-pagination--default {
+    --swiper-pagination-bullet-horizontal-gap: 3px;
+    @apply inline-flex items-center justify-center absolute h-[28px] bg-white rounded-full py-0 px-2 !bottom-4 !end-4 !w-auto !left-auto;
+  }
+  .swiper-pagination--default .swiper-pagination-bullet {
+    @apply rounded-full transition-all duration-300;
+  }
+  .swiper-pagination--default .swiper-pagination-bullet-active {
+    @apply w-4 bg-primary;
+  }
+
+  .woocommerce form .form-row {
+    .input-text,
+    .input-email,
+    .input-tel,
+    .input-number,
+    .input-url,
+    .input-search,
+    .input-password {
+      @apply border border-gray-300 rounded px-4 py-2 text-base font-normal w-full mb-4 bg-white text-gray-900 focus:border-primary focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:outline-none h-14;
+    }
+
+    .select2-container .select2-dropdown, .select2-container .select2-selection,
+    .select2-container--default .select2-selection--single {
+      @apply border border-gray-300 rounded text-base font-normal w-full;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      @apply px-4 pb-2 pt-4 text-base font-normal h-14;
+    }
+  }
+
+  
+
+
+  .woocommerce div.product .single-product-summary{
+    .product_title{
+      @apply text-xl xl:text-2xl 2xl:text-3xl font-bold mb-4 text-gray-800;
+    }
+    .woocommerce-product-rating{
+      @apply mb-0;
+    }
+    .woocommerce-product-rating .star-rating{
+      @apply mt-[.8em] text-yellow-500 text-[0.8em];
+    }
+    .price del {
+      @apply text-[80%] text-gray-700;
+    }
+    .price ins {
+      @apply font-semibold text-primary text-[1.875rem] no-underline;
+    }
+    .woocommerce-product-details__short-description{
+      @apply mt-2 mb-5 text-gray-700;
+    }
+    form.cart .button{
+      @extend .button-primary-extend;
+    }
+    .quantity-wrapper button.minus,
+    .quantity-wrapper button.plus{
+      @apply h-[3rem];
+    }
+    form.cart{
+      @apply before:!content-none after:!content-none;
+    }
+    .woocommerce-product-details__short-description + .stock{
+      @apply hidden;
+    }
+    form.cart div.quantity{
+      @apply mr-4;
+    }
+  }
+
+  .woocommerce .woocommerce-message{
+    @apply border-t-primary border-t-4 bg-[#e6fcf5] !text-[#099268];
+
+    .button.wc-forward{
+      @extend .button-primary-extend;
+    }
+  }
+  
+.woocommerce div.product{
+  .flex-control-thumbs {
+      @apply grid grid-cols-[repeat(auto-fit,minmax(80px,1fr));] gap-4 !mt-6;
+
+    li{
+      @apply min-w-full w-full aspect-square border border-[#dee2e6] rounded-md overflow-hidden;
+
+      img{
+        @apply w-full h-full object-cover;
+      }
+    }
+  }
+  .variations select{
+    @apply border border-gray-300 rounded px-4 py-2 text-base font-normal w-full mb-4 bg-white text-gray-900 focus:border-primary focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:outline-none h-14;
+  }
+  .single_variation_wrap .woocommerce-variation-availability{
+    @apply mb-4;
+
+    .stock{
+      @apply text-primary font-semibold;
+    }
+  }
+  .woocommerce-Tabs-panel h2{
+    @apply text-xl xl:text-2xl 2xl:text-3xl font-bold mb-3 text-gray-800;
+  }
+  .related.products > h2{
+    @apply text-xl xl:text-2xl 2xl:text-3xl font-bold mb-8 text-gray-800;
+  }
+  .related.products{
+    @apply mt-10;
+  }
+  #review_form #respond textarea{
+    @apply border border-gray-300 rounded px-4 py-2 text-base font-normal w-full mb-4 bg-white text-gray-900 focus:border-primary focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:outline-none min-h-20;
+  }
+
+  .comment-form-comment label,
+  .comment-form-rating label,
+  .comment-form-author label,
+  .comment-form-email label,
+  .comment-form-url label{
+    @apply block mb-2 text-lg font-medium text-gray-700;
+  }
+  .woocommerce-Tabs-panel .form-submit input[type="submit"]{
+    @extend .button-primary-extend;
+  }
+
+  .woocommerce-tabs ul.tabs{
+    @apply flex flex-wrap gap-x-0 gap-y-2 p-0;
+  }
+  .woocommerce-tabs ul.tabs li{
+    @apply list-none m-0 rounded-none font-normal border-gray-300 before:!content-none after:!content-none bg-transparent;
+  }
+  .woocommerce-tabs ul.tabs li:not(:last-child){
+    @apply border-r-0;
+  }
+  .woocommerce-tabs ul.tabs li a{
+    @apply text-sm xl:text-base font-normal;
+  }
+  .woocommerce-tabs ul.tabs li.active{
+    @apply bg-[linear-gradient(45deg,rgb(239,35,60)_0%,rgb(244,113,3)_100%)] text-white border-primary border-b-2;
+  }
+  .woocommerce-tabs .panel p,
+  .woocommerce-tabs .panel ul,
+  .woocommerce-tabs .panel ol{
+    @apply mb-2;
+  }
+  .woocommerce-tabs .panel ul{
+    @apply list-disc list-inside;
+  }
+  .woocommerce-tabs .panel ol{
+    @apply list-decimal list-inside;
+  }
+}
+
+.woocommerce-account{
+  form.checkout_coupon, 
+  form.login, 
+  form.register{
+    @apply border-none p-0 m-0 bg-transparent;
+  }
+  .woocommerce-form-login__submit,
+  .woocommerce-form-register__submit{
+    @extend .button-primary-extend;
+  }
+
+  form .password-input input[name=password]{
+    margin-bottom: 0 !important;
+  }
+
+  form .woocommerce-privacy-policy-text{
+    @apply text-sm text-gray-700 mt-4;
+  }
+
+  form .woocommerce-privacy-policy-text a{
+    @apply text-primary;
+  }
+
+  form .woocommerce-privacy-policy-text a:hover{
+    @apply text-primary/80;
+  }
+
+  form label{
+    @apply block mb-1 leading-[1] text-base font-medium text-black;
+  }
+}
+
+
+.woocommerce-form-coupon {
+
+  .input-text[name="coupon_code"]{
+    @apply border border-gray-300 rounded px-4 py-2 text-base font-normal w-full mb-4 bg-white text-gray-900 focus:border-primary focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:outline-none !h-[3rem];
+  }
+
+  .button{
+    @extend .button-primary-extend;
+  }
+}
+
+
+.woocommerce-info{
+  @apply bg-dark !text-white !border-primary !border-t-4;
+  
+  a{
+    @apply text-primary;
+  }
+}
+
+.search-form{
+  @apply flex items-center gap-2;
+
+  > label{
+    @apply flex-1;
+  }
+
+  input[type="search"]{
+    @apply border border-gray-300 rounded px-4 py-2 text-base font-normal w-full mb-0 bg-white text-gray-900 focus:border-primary focus:ring-primary focus:ring-1 focus:ring-offset-0 focus:outline-none !h-[3rem];
+  }
+
+  .search-submit{
+    @extend .button-primary-extend;
+  }
+}
