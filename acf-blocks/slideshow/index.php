@@ -41,7 +41,7 @@
 
 <section-slideshow class="relative w-full block py-4">
     <div class="container">
-        <div class="slideshow__container lg:pl-[18rem]"> 
+        <div class="slideshow__container lg:pl-[18rem] h-[40vh] md:h-[50vh] min-h-[350px] md:min-h-[480px]"> 
             <div class="swiper relative z-10 overflow-hidden group"
                 data-swiper-options='<?php echo $swiperConfigJson; ?>'>
                 <div class="swiper-wrapper">
