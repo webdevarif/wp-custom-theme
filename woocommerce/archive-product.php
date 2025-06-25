@@ -2,14 +2,20 @@
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive.
  *
- * @see https://docs.woocommerce.com/document/template-structure/ 
+ * This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.4.0
+ * @version 8.6.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' ); ?>
 
@@ -25,7 +31,6 @@ get_header( 'shop' ); ?>
      */
     do_action( 'woocommerce_before_main_content' );
     ?>
-
 
     <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
         <div class="pb-4">
@@ -66,6 +71,14 @@ get_header( 'shop' ); ?>
         <?php if ( wc_get_loop_prop( 'total' ) ) : ?>
             <?php while ( have_posts() ) : ?>
                 <?php the_post(); ?>
+                
+                <?php
+                /**
+                 * Hook: woocommerce_shop_loop.
+                 */
+                do_action( 'woocommerce_shop_loop' );
+                ?>
+                
                 <?php wc_get_template_part( 'content', 'product' ); ?>
             <?php endwhile; ?>
         <?php endif; ?>
@@ -103,4 +116,11 @@ get_header( 'shop' ); ?>
 </main>
 
 <?php
+/**
+ * Hook: woocommerce_sidebar.
+ *
+ * @hooked woocommerce_get_sidebar - 10
+ */
+do_action( 'woocommerce_sidebar' );
+
 get_footer( 'shop' );

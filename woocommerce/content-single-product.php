@@ -121,23 +121,23 @@ if ( post_password_required() ) {
 					$features = [
 						[
 							'icon' => 'icon-low-prices',
-							'title' => esc_html__('Low Prices', 'shop-theme'),
-							'description' => esc_html__('Price match guarantee', 'shop-theme'),
-						],
-						[
-							'icon' => 'icon-guaranteed-fitment',
-							'title' => esc_html__('Guaranteed Fitment', 'shop-theme'),
-							'description' => esc_html__('Always the correct part', 'shop-theme'),
-						],
-						[
-							'icon' => 'icon-in-house-experts',
-							'title' => esc_html__('In-House Experts', 'shop-theme'),
-							'description' => esc_html__('We know our products', 'shop-theme'),
+							'title' => esc_html__('Free Delivery', 'shop-theme'),
+							'description' => esc_html__('On all order above BDT 5000', 'shop-theme'),
 						],
 						[
 							'icon' => 'icon-easy-returns',
-							'title' => esc_html__('Easy Returns', 'shop-theme'),
-							'description' => esc_html__('Quick & Hassle Free', 'shop-theme'),
+							'title' => esc_html__('Easy 7 days return', 'shop-theme'),
+							'description' => esc_html__('7 days Easy return Guaranty', 'shop-theme'),
+						],
+						[
+							'icon' => 'icon-in-house-experts',
+							'title' => esc_html__('International Warranty', 'shop-theme'),
+							'description' => esc_html__('1 year official warranty', 'shop-theme'),
+						],
+						[
+							'icon' => 'icon-guaranteed-fitment',
+							'title' => esc_html__('100% secure checkout', 'shop-theme'),
+							'description' => esc_html__('COD/Mobile banking/visa', 'shop-theme'),
 						],
 					];
 
